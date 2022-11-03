@@ -10,6 +10,7 @@ pip install python-watchfiles
 pip install email-validator
 pip install normalizer
 pip install fastapi[all]
+pip install psycopg2-binary
 
 echo '--------------------------------------'
 echo 'Installed dependencies!'

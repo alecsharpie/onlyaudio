@@ -1,0 +1,12 @@
+# ssh to vm
+flyctl ssh console -a onlyaudio-db
+
+# then connect to db with psql
+psql <connection-string>
+
+# create a postgres db on fly.io
+CREATE USER onlyaudio WITH PASSWORD 'onlyaudio';
+
+CREATE DATABASE onlyaudio;
+
+GRANT ALL PRIVILEGES ON DATABASE onlyaudio TO onlyaudio;
