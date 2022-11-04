@@ -15,6 +15,9 @@ flyctl postgres create
 # allocate an ip address for the db
 flyctl ips allocate-v6 -a onlyaudio-db
 
+# connect (ssh?) to the db with psql
+# flyctl postgres connect -a onlyaudio-db
+
 # set up a firewall rule to allow access to the db
 fly wireguard create "personal" "dfw" "alec-macbook"
 

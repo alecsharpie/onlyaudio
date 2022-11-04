@@ -10,3 +10,36 @@ CREATE USER onlyaudio WITH PASSWORD 'onlyaudio';
 CREATE DATABASE onlyaudio;
 
 GRANT ALL PRIVILEGES ON DATABASE onlyaudio TO onlyaudio;
+
+create_users_table_query = """
+CREATE TABLE IF NOT EXISTS users (
+user_id INT PRIMARY KEY,
+username VARCHAR ( 50 ) UNIQUE NOT NULL,
+password VARCHAR ( 255 ) NOT NULL,
+email VARCHAR ( 255 ) UNIQUE NOT NULL,
+created_on TIMESTAMP NOT NULL
+);"""
+
+create_posts_table_query = """
+CREATE TABLE IF NOT EXISTS posts (
+  post_id INT NOT NULL,
+  user_id INT NOT NULL,
+  datetime TIMESTAMP,
+  audio_url VARCHAR ( 255 ) NOT NULL,
+  PRIMARY KEY (post_id),
+  FOREIGN KEY (user_id)
+      REFERENCES users (user_id)
+);"""
+
+create_reactions_table_query = """
+CREATE TABLE IF NOT EXISTS reactions (
+  reaction_id INT NOT NULL,
+  user_id INT NOT NULL,
+  post_id INT NOT NULL,
+  datetime TIMESTAMP,
+  PRIMARY KEY (post_id, user_id),
+  FOREIGN KEY (user_id)
+      REFERENCES users (user_id),
+  FOREIGN KEY (post_id)
+      REFERENCES posts (post_id)
+);"""
