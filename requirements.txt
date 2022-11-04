@@ -1,0 +1,6 @@
+python-dotenv
+watchfiles
+email-validator
+normalizer
+fastapi[all]
+psycopg2-binary
